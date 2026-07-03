@@ -474,7 +474,39 @@ main section {
 table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 640px;
+  min-width: 720px;
+}
+
+thead th:last-child,
+tbody td:last-child {
+  width: 64px;
+  text-align: center;
+}
+
+.loa-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.loa-link svg {
+  width: 17px;
+  height: 17px;
+}
+
+.loa-link:hover {
+  color: var(--cyan);
+  border-color: var(--cyan);
+  box-shadow: 0 0 14px rgba(34, 211, 238, 0.3);
 }
 
 thead th {
@@ -501,19 +533,21 @@ tbody tr:last-child td {
 }
 
 tbody tr {
-  transition:
-    background 0.25s ease,
-    transform 0.2s ease;
+  transition: background 0.25s ease;
 }
 
 tbody tr:hover {
   background: var(--surface);
-  transform: translateX(4px);
+}
+
+tbody tr:hover td:first-child {
+  box-shadow: inset 3px 0 0 var(--cyan);
 }
 
 tbody td:first-child {
   color: var(--text);
   font-weight: 500;
+  transition: box-shadow 0.25s ease;
 }
 
 .status-pill {

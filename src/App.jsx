@@ -20,14 +20,54 @@ const COMPETENCIES = [
 ]
 
 const HALL_OF_FAME = [
-  { org: 'DKI Jakarta Provincial CSIRT', vuln: 'Broken Link Hijacking (BLH)', status: 'Appreciation Certificate' },
-  { org: 'Ministry of Trade Republic of Indonesia', vuln: 'Cross-Site Scripting (XSS)', status: 'Appreciation Certificate' },
-  { org: 'Rembang Regency Government CSIRT', vuln: 'HTML Injection, IDOR & Sensitive Data Exposure', status: 'Appreciation Certificate' },
-  { org: 'PT Bank Rakyat Indonesia (BRI)', vuln: 'Open Redirect (Production)', status: 'Appreciation Certificate' },
-  { org: 'Maryland State Government (via Bugcrowd)', vuln: 'Broken Link Hijacking (BLH)', status: 'Report Verified' },
-  { org: 'NASA (via Bugcrowd)', vuln: 'Broken Link Hijacking (BLH)', status: 'Appreciation Certificate' },
-  { org: 'PT Sentra Vidya Utama', vuln: 'Open Redirect (Production)', status: 'Bounty Awarded' },
-  { org: 'BBC News', vuln: 'Insecure Design (Production)', status: 'Hall of Fame + Merchandise' },
+  {
+    org: 'DKI Jakarta Provincial CSIRT',
+    vuln: 'Broken Link Hijacking (BLH)',
+    status: 'Appreciation Certificate',
+    loa: 'Jakarta.pdf',
+  },
+  {
+    org: 'Ministry of Trade Republic of Indonesia',
+    vuln: 'Cross-Site Scripting (XSS)',
+    status: 'Appreciation Certificate',
+    loa: 'Sertifikat-Vulnerabilitas-Kemendag.pdf',
+  },
+  {
+    org: 'Rembang Regency Government CSIRT',
+    vuln: 'HTML Injection, IDOR & Sensitive Data Exposure',
+    status: 'Appreciation Certificate',
+    loa: 'Kabupaten-Rembang.png',
+  },
+  {
+    org: 'PT Bank Rakyat Indonesia (BRI)',
+    vuln: 'Open Redirect (Production)',
+    status: 'Appreciation Certificate',
+    loa: 'BRI.pdf',
+  },
+  {
+    org: 'Maryland State Government (via Bugcrowd)',
+    vuln: 'Broken Link Hijacking (BLH)',
+    status: 'Report Verified',
+    loa: 'Bugcrowd-maryland.gov.png',
+  },
+  {
+    org: 'NASA (via Bugcrowd)',
+    vuln: 'Broken Link Hijacking (BLH)',
+    status: 'Appreciation Certificate',
+    loa: 'NASALetterOfAppreciation.pdf',
+  },
+  {
+    org: 'PT Sentra Vidya Utama',
+    vuln: 'Open Redirect (Production)',
+    status: 'Bounty Awarded',
+    loa: 'PT.Sentra Vidya Utama .png',
+  },
+  {
+    org: 'BBC News',
+    vuln: 'Insecure Design (Production)',
+    status: 'Hall of Fame + Merchandise',
+    loa: 'BBCNews.png',
+  },
 ]
 
 const STATUS_CLASS = {
@@ -36,6 +76,13 @@ const STATUS_CLASS = {
   'Bounty Awarded': 'status-bounty',
   'Hall of Fame + Merchandise': 'status-fame',
 }
+
+const EyeIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+    <path d="M1.5 12s4-7 10.5-7 10.5 7 10.5 7-4 7-10.5 7S1.5 12 1.5 12z" />
+    <circle cx="12" cy="12" r="3" />
+  </svg>
+)
 
 const COURSES = [
   { name: 'Basic Pentest – Ethical Hacking', state: 'Completed' },
@@ -213,7 +260,11 @@ function App() {
               <a className="btn btn-primary" href="#about">
                 ./explore --profile
               </a>
-              <a className="btn btn-ghost" href="#contact">
+              <a
+                className="btn btn-ghost"
+                href={`${import.meta.env.BASE_URL}${encodeURIComponent('CV Bayu Adji Wilarno - IT Security.pdf')}`}
+                download="Bayu-Adji-Wilarno-CV.pdf"
+              >
                 Download CV
               </a>
             </Reveal>
@@ -290,6 +341,7 @@ function App() {
                   <th>Organization</th>
                   <th>Vulnerability Type</th>
                   <th>Status</th>
+                  <th>LoA</th>
                 </tr>
               </thead>
               <tbody>
@@ -301,6 +353,19 @@ function App() {
                       <span className={`status-pill ${STATUS_CLASS[row.status] ?? ''}`}>
                         {row.status}
                       </span>
+                    </td>
+                    <td data-label="LoA">
+                      {row.loa && (
+                        <a
+                          className="loa-link"
+                          href={`${import.meta.env.BASE_URL}LoA/${encodeURIComponent(row.loa)}`}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={`Lihat LoA dari ${row.org}`}
+                        >
+                          <EyeIcon />
+                        </a>
+                      )}
                     </td>
                   </tr>
                 ))}
