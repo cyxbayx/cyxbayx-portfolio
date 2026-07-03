@@ -240,7 +240,7 @@ function App() {
                 My journey started in offensive security &mdash; hunting for vulnerabilities,
                 thinking like an attacker, and reporting real-world flaws to organizations across
                 government, banking, and international institutions. That mindset now carries
-                into defensive operations training, where I apply the same instincts to help
+                into defensive security operations, where I apply the same instincts to help
                 systems hold the line.
               </p>
               <blockquote>
