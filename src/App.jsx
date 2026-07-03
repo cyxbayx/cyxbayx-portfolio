@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import './App.css'
+import profilePhoto from './assets/profile.png'
 
 const NAV_LINKS = [
   { href: '#home', label: 'Home' },
@@ -9,7 +10,7 @@ const NAV_LINKS = [
   { href: '#contact', label: 'Contact' },
 ]
 
-const TOOLS = ['Kali Linux', 'Burp Suite', 'Wazuh', 'Metasploit', 'Nmap', 'Nuclei', 'SQLMap']
+const TOOLS = ['Kali Linux', 'Burp Suite', 'Wazuh', 'Metasploit', 'Nmap', 'Nuclei', 'SQLMap', 'Wireshark']
 
 const COMPETENCIES = [
   'Web Application Analysis',
@@ -227,7 +228,7 @@ function App() {
           <div className="about-grid">
             <Reveal className="about-photo">
               <div className="photo-frame">
-                <span className="photo-initials">BAW</span>
+                <img className="photo-img" src={profilePhoto} alt="Bayu Adji Wilarno" />
               </div>
             </Reveal>
             <Reveal className="about-text" delay={150}>

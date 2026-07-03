@@ -308,9 +308,14 @@ main section {
 }
 
 .photo-frame {
+  position: relative;
   aspect-ratio: 1;
+  overflow: hidden;
   border-radius: 20px;
-  background: linear-gradient(145deg, var(--surface-strong), var(--surface));
+  background:
+    radial-gradient(circle at 50% 30%, rgba(168, 85, 247, 0.35), transparent 60%),
+    radial-gradient(circle at 70% 80%, rgba(34, 211, 238, 0.25), transparent 55%),
+    linear-gradient(145deg, var(--surface-strong), var(--surface));
   border: 1px solid var(--border);
   display: flex;
   align-items: center;
@@ -327,14 +332,14 @@ main section {
   box-shadow: 0 0 55px rgba(34, 211, 238, 0.25);
 }
 
-.photo-initials {
-  font-family: var(--mono);
-  font-size: 3rem;
-  font-weight: 700;
-  background: linear-gradient(100deg, var(--purple-light), var(--cyan));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+.photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 12%;
+  mix-blend-mode: luminosity;
+  opacity: 0.94;
+  filter: contrast(1.05) saturate(1.15);
 }
 
 .about-text p {
