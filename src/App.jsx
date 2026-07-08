@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import './App.css'
-import profilePhoto from './assets/profile.png'
+import profilePhoto from './assets/profile.webp'
 
 const NAV_LINKS = [
   { href: '#home', label: 'Home' },
   { href: '#about', label: 'About' },
   { href: '#hall-of-fame', label: 'Hall of Fame' },
+  { href: '#writeup', label: 'Write-up' },
   { href: '#certifications', label: 'Certifications' },
   { href: '#contact', label: 'Contact' },
 ]
@@ -378,9 +379,46 @@ function App() {
           </Reveal>
         </section>
 
+        <section id="writeup" className="writeup">
+          <Reveal className="section-heading">
+            <span className="section-tag">03 // write-up</span>
+            <h2>Featured Write-up</h2>
+          </Reveal>
+          <Reveal className="writeup-card">
+            <div className="writeup-meta">
+              <span className="writeup-org">BBC News &middot; London, UK</span>
+              <span className="writeup-tag">Broken Link Hijacking (BLH)</span>
+              <span className="writeup-tag writeup-tag-alt">CVSS 5.4 &middot; Medium</span>
+            </div>
+            <p>
+              A Broken Link Hijacking vulnerability was identified on BBC News&rsquo; website:
+              links intended for official Instagram accounts pointed to usernames that had since
+              become inactive and available for registration. As proof of concept, one of the
+              usernames was reclaimed, demonstrating full control over the account it once pointed
+              to.
+            </p>
+            <p>
+              Left unaddressed, this could have enabled brand impersonation and the spread of
+              misinformation reaching millions of readers under BBC&rsquo;s name. The issue has
+              since been remediated by BBC&rsquo;s team.
+            </p>
+            <a
+              className="writeup-link"
+              href="https://github.com/cyxbayx/BBC-Broken-Link-Hijacking"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Read full write-up on GitHub
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </a>
+          </Reveal>
+        </section>
+
         <section id="certifications" className="certifications">
           <Reveal className="section-heading">
-            <span className="section-tag">03 // education</span>
+            <span className="section-tag">04 // education</span>
             <h2>Certifications</h2>
           </Reveal>
           <div className="cert-columns">

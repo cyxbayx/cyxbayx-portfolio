@@ -589,6 +589,85 @@ tbody td:first-child {
   font-style: italic;
 }
 
+/* ---------- Write-up ---------- */
+.writeup-card {
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid var(--border-soft);
+  border-left: 3px solid var(--cyan);
+  background: linear-gradient(160deg, var(--surface), transparent);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.writeup-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 34px rgba(34, 211, 238, 0.14);
+}
+
+.writeup-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.writeup-org {
+  font-family: var(--mono);
+  font-weight: 600;
+  color: var(--text);
+}
+
+.writeup-tag {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(34, 211, 238, 0.4);
+  color: var(--cyan);
+  white-space: nowrap;
+}
+
+.writeup-tag-alt {
+  border-color: rgba(168, 85, 247, 0.4);
+  color: var(--purple-light);
+}
+
+.writeup-card p {
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin: 0 0 1.1rem;
+}
+
+.writeup-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  color: var(--cyan);
+  transition:
+    gap 0.25s ease,
+    color 0.25s ease;
+}
+
+.writeup-link svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.25s ease;
+}
+
+.writeup-link:hover {
+  color: var(--purple-light);
+  gap: 0.75rem;
+}
+
+.writeup-link:hover svg {
+  transform: translateX(3px);
+}
+
 /* ---------- Certifications ---------- */
 .cert-columns {
   display: grid;
