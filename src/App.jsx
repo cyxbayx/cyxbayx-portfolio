@@ -262,7 +262,7 @@ function App() {
               </a>
               <a
                 className="btn btn-ghost"
-                href={`${import.meta.env.BASE_URL}${encodeURIComponent('CV Bayu Adji Wilarno - IT Security.pdf')}`}
+                href={`${import.meta.env.BASE_URL}${encodeURIComponent('CV Bayu Adji Wilarno - ITSecurity - English.pdf')}`}
                 download="Bayu-Adji-Wilarno-CV.pdf"
               >
                 Download CV
@@ -473,7 +473,7 @@ function App() {
             </li>
             <li>
               <a
-                href="https://linkedin.com/in/bayu-adji-wilarno-2a8251188/"
+                href="https://www.linkedin.com/in/bayuawilarno/"
                 target="_blank"
                 rel="noreferrer"
               >
