@@ -26,42 +26,49 @@ const HALL_OF_FAME = [
     vuln: 'Broken Link Hijacking (BLH)',
     status: 'Appreciation Certificate',
     loa: 'Jakarta.pdf',
+    writeupSlug: 'dki-jakarta',
   },
   {
     org: 'Ministry of Trade Republic of Indonesia',
     vuln: 'Cross-Site Scripting (XSS)',
     status: 'Appreciation Certificate',
     loa: 'Sertifikat-Vulnerabilitas-Kemendag.pdf',
+    writeupSlug: 'kemendag',
   },
   {
     org: 'Rembang Regency Government CSIRT',
     vuln: 'HTML Injection, IDOR & Sensitive Data Exposure',
     status: 'Appreciation Certificate',
     loa: 'Kabupaten-Rembang.png',
+    writeupSlug: 'rembang',
   },
   {
     org: 'PT Bank Rakyat Indonesia (BRI)',
     vuln: 'SSRF (Production)',
     status: 'Appreciation Certificate',
     loa: 'BRI.pdf',
+    writeupSlug: 'bri',
   },
   {
     org: 'Maryland State Government (via Bugcrowd)',
     vuln: 'Broken Link Hijacking (BLH)',
     status: 'Report Verified',
     loa: 'Bugcrowd-maryland.gov.png',
+    writeupSlug: 'maryland-gov',
   },
   {
     org: 'NASA (via Bugcrowd)',
     vuln: 'Broken Link Hijacking (BLH)',
     status: 'Appreciation Certificate',
     loa: 'NASALetterOfAppreciation.pdf',
+    writeupSlug: 'nasa',
   },
   {
     org: 'PT Sentra Vidya Utama',
     vuln: 'Open Redirect (Production)',
     status: 'Bounty Awarded',
     loa: 'PT.Sentra Vidya Utama .png',
+    writeupSlug: 'sevima',
   },
   {
     org: 'BBC News',
@@ -82,6 +89,82 @@ const WRITEUPS = {
     summary: [
       'A Broken Link Hijacking vulnerability was identified on BBC News’ website: links intended for official Instagram accounts pointed to usernames that had since become inactive and available for registration. As proof of concept, one of the usernames was reclaimed, demonstrating full control over the account it once pointed to.',
       'Left unaddressed, this could have enabled brand impersonation and the spread of misinformation reaching millions of readers under BBC’s name. The issue has since been remediated by BBC’s team.',
+    ],
+  },
+  nasa: {
+    org: 'NASA (via Bugcrowd)',
+    location: 'United States',
+    vulnType: 'Broken Link Hijacking (BLH)',
+    cvss: 'Low · Bugcrowd P4',
+    githubUrl: 'https://github.com/cyxbayx/NASA-Broken-Link-Hijacking',
+    summary: [
+      'A Broken Link Hijacking vulnerability was identified on a NASA (nasa.gov) blog post: the “Links to videos of this event” section linked to a Twitter/X account whose username had since become inactive and available for re-registration.',
+      'If left unaddressed, this could have allowed an attacker to reclaim the abandoned handle and post malicious or misleading content reachable via an official NASA link. The finding was reported through NASA’s Vulnerability Disclosure Program via Bugcrowd and has since been remediated.',
+    ],
+  },
+  'maryland-gov': {
+    org: 'Maryland State Government (via Bugcrowd)',
+    location: 'United States',
+    vulnType: 'Broken Link Hijacking (BLH)',
+    cvss: 'Low · Bugcrowd P4',
+    githubUrl: 'https://github.com/cyxbayx/MaryLandGOV-Broken-Link-Hijacking',
+    summary: [
+      'A Broken Link Hijacking vulnerability was identified on the Maryland State Board of Elections website (elections.maryland.gov): a candidate listing page for the 2026 Gubernatorial Primary linked to an Instagram account whose username had since become inactive and available for re-registration.',
+      'If left unaddressed, this could have allowed an attacker to register the unclaimed username and post misleading, impersonating, or politically-motivated content reachable via the official Maryland elections link — a direct risk to voter trust and election integrity. The finding was reported through the state’s Vulnerability Disclosure Program via Bugcrowd and has since been remediated.',
+    ],
+  },
+  'dki-jakarta': {
+    org: 'DKI Jakarta Provincial CSIRT',
+    location: 'Jakarta, Indonesia',
+    vulnType: 'Broken Link Hijacking (BLH)',
+    githubUrl: 'https://github.com/cyxbayx/Jakarta-Broken-Link-Hijacking',
+    summary: [
+      'A Broken Link Hijacking vulnerability was identified on the official website of Kelurahan Penggilingan (timur.jakarta.go.id): the contact page linked to an Instagram account that had since become inactive, leaving its username available for re-registration.',
+      'If left unaddressed, this could have allowed an unauthorized party to take control of the link referenced by the official .go.id website and distribute misleading content to residents under the guise of a government account. The finding was reported to the DKI Jakarta Provincial CSIRT and has since been remediated.',
+    ],
+  },
+  bri: {
+    org: 'PT Bank Rakyat Indonesia (BRI)',
+    location: 'Indonesia',
+    vulnType: 'Server-Side Request Forgery (SSRF)',
+    cvss: 'Low · Blind SSRF',
+    githubUrl: 'https://github.com/cyxbayx/BRI-SSRF',
+    summary: [
+      'A blind Server-Side Request Forgery vulnerability was identified on a BRI merchant domain (jadimerchant.bri.co.id): a JSP forwarding endpoint accepted a user-controlled URL parameter without adequate validation, allowing the application server to be coerced into performing DNS resolution and outbound connections toward attacker-controlled infrastructure. A WAF bypass using URL ambiguity — appending @localhost with a non-ASCII terminator — was used to slip past the security filters.',
+      'Out-of-band testing confirmed the backend server’s involvement through DNS queries originating from BRI infrastructure rather than the tester’s network, validating the blind SSRF. Though low severity due to its blind nature, SSRF carries elevated risk within banking infrastructure, as it can facilitate internal network reconnaissance and potential lateral movement. The finding was reported and validated by BRI’s team.',
+    ],
+  },
+  kemendag: {
+    org: 'Ministry of Trade Republic of Indonesia',
+    location: 'Indonesia',
+    vulnType: 'Reflected Cross-Site Scripting (XSS)',
+    cvss: 'Medium',
+    githubUrl: 'https://github.com/cyxbayx/Ministry-of-Trade-Republic-of-Indonesia-Reflected-XSS',
+    summary: [
+      'A Reflected Cross-Site Scripting vulnerability was identified on the Ministry of Trade SSO portal (sso.kemendag.go.id): the callback query parameter was reflected directly into the HTML response without encoding, allowing arbitrary JavaScript to be injected. The proof of concept closed the surrounding HTML tags and injected a <details> element with an ontoggle event handler capable of reaching session cookies.',
+      'Given the SSO’s central role in government authentication, successful exploitation could have enabled session hijacking and unauthorized access across dependent services. The finding was reported and has since been remediated by the agency.',
+    ],
+  },
+  rembang: {
+    org: 'Rembang Regency Government CSIRT',
+    location: 'Rembang, Indonesia',
+    vulnType: 'IDOR, Sensitive Data Exposure & HTML Injection',
+    cvss: 'Critical · CVSS up to 9.0',
+    githubUrl: 'https://github.com/cyxbayx/Rembang-Regency-Government-Vulnerability-Findings',
+    summary: [
+      'Multiple vulnerabilities were identified in the Rembang Regency employee information system SIMPEG (simpeg.rembangkab.go.id). An Insecure Direct Object Reference (CVSS 9.0, Critical) in the e-document module allowed any authenticated user to access another employee’s personal document archive by manipulating the nip (employee ID) parameter, enabling systematic harvesting of all civil servants’ records. Separately, a Sensitive Data Exposure (CVSS 7.5, High) left employee identity documents — national ID cards, family cards, and birth certificates — directly downloadable through predictable, unauthenticated file paths.',
+      'A third finding, reflected HTML Injection (CVSS 6.5, Medium) in the same nip parameter, reflected unsanitized input back into the page, enabling UI manipulation and phishing against SIMPEG users. Together these exposed the personal data of the regency’s civil servants at scale. All three findings were reported to the Rembang Regency Government CSIRT and have since been remediated.',
+    ],
+  },
+  sevima: {
+    org: 'PT Sentra Vidya Utama',
+    location: 'Indonesia',
+    vulnType: 'Open Redirect',
+    cvss: 'Medium',
+    githubUrl: 'https://github.com/cyxbayx/Sevima-Open-Redirect',
+    summary: [
+      'An Open Redirect vulnerability was identified on the Sevima Single Sign-On system (sso.sevima.com): the /sessions/authorize endpoint failed to validate the redirect_uri parameter against a domain allowlist, permitting authenticated users to be redirected to arbitrary attacker-controlled hosts.',
+      'On an authentication endpoint, a single unvalidated redirect parameter can turn a legitimate login link into a phishing vector — sending users who trust the Sevima domain onward to a malicious site after signing in. The finding was reported through responsible disclosure and remediated the next day, with Sevima adding allowlist validation restricting redirect_uri to trusted domains.',
     ],
   },
 }
@@ -548,7 +631,7 @@ function WriteupPage() {
                 {data.org} &middot; {data.location}
               </span>
               <span className="writeup-tag">{data.vulnType}</span>
-              <span className="writeup-tag writeup-tag-alt">{data.cvss}</span>
+              {data.cvss && <span className="writeup-tag writeup-tag-alt">{data.cvss}</span>}
             </div>
             <h1 className="writeup-page-title">{data.org} Disclosure Write-up</h1>
             {data.summary.map((paragraph, i) => (
