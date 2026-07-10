@@ -41,7 +41,7 @@ const HALL_OF_FAME = [
   },
   {
     org: 'PT Bank Rakyat Indonesia (BRI)',
-    vuln: 'Open Redirect (Production)',
+    vuln: 'SSRF (Production)',
     status: 'Appreciation Certificate',
     loa: 'BRI.pdf',
   },
